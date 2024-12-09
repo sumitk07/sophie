@@ -21,6 +21,21 @@ const lighRed = Color(0xFFFEF3F2);
 const red = Color(0xFFF97066);
 const darkred = Color(0xFFF04438);
 
+const black = Color(0xFF272727);
+const textBlack = Color(0xFF272727);
+
+const backgroundColor = Color(0xFFe3f5f5);
+
+LinearGradient backgroundGradient = LinearGradient(
+  colors: [
+    white,
+    primary.withOpacity(0.02),
+  ],
+  end: Alignment.bottomCenter,
+  begin: Alignment.topCenter,
+  transform: GradientRotation(90),
+);
+
 TextStyle regular = GoogleFonts.poppins(fontWeight: FontWeight.w400);
 
 TextStyle medium = GoogleFonts.poppins(fontWeight: FontWeight.w500);

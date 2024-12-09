@@ -8,10 +8,10 @@ import 'package:sophie/app/widgets/custom_textfield.dart';
 import 'package:sophie/shared/spacing.dart';
 import 'package:sophie/shared/theme.dart';
 
-import '../controllers/login_controller.dart';
+import '../controllers/register_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({super.key});
+class RegisterView extends GetView<RegisterController> {
+  const RegisterView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +23,7 @@ class LoginView extends GetView<LoginController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AuthHeader(
-                title: "Welcome 👋",
+                title: "Create New Account",
                 subTitle: "Let's Get You Started with AI Calling",
               ),
               Padding(
@@ -61,6 +61,13 @@ class LoginView extends GetView<LoginController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
+                    CustomTextField(
+                      label: "Full Name",
+                      placeholder: "Enter Your Full Name",
+                      controller: controller.fullNameController,
+                      icon: Icons.lock,
+                    ),
+                    verticalSpace(10),
                     SizedBox(
                       height: 120,
                       child: TabBarView(
@@ -81,62 +88,6 @@ class LoginView extends GetView<LoginController> {
                         ],
                       ),
                     ),
-                    CustomTextField(
-                      label: "Password",
-                      placeholder: "Enter Password",
-                      controller: controller.passwordController,
-                      icon: Icons.lock,
-                    ),
-                    verticalSpace(10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Obx(
-                          () => InkWell(
-                            onTap: controller.toggleRememberMe,
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 24,
-                                  height: 24,
-                                  child: Checkbox(
-                                    value: controller.rememberMe.value,
-                                    onChanged: controller.onChangeRememberMe,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    side: BorderSide(
-                                      color: Colors.grey[400]!,
-                                      width: 1.5,
-                                    ),
-                                    activeColor: primary,
-                                  ),
-                                ),
-                                horizontalSpace(5),
-                                Text(
-                                  'Remember me',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: textBlack,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
-                          style:
-                              TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                          child: Text(
-                            "Forgot Password?",
-                            style:
-                                regular.copyWith(fontSize: 16, color: primary),
-                          ),
-                        )
-                      ],
-                    )
                   ],
                 ),
               ),
@@ -145,24 +96,23 @@ class LoginView extends GetView<LoginController> {
                 child: Column(
                   children: [
                     CustomButton(
-                      title: "Sign In",
-                      onPressed: () => Get.toNamed(Routes.BASE),
+                      title: "Register",
+                      onPressed: () => Get.toNamed(Routes.VERIFY_REGISTER_OTP),
                     ),
                     verticalSpace(10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't Have an account?",
+                          "Already have an account?",
                           style: regular.copyWith(fontSize: 16),
                         ),
-                        horizontalSpace(5),
                         TextButton(
-                          onPressed: () => Get.toNamed(Routes.REGISTER),
+                          onPressed: Get.back,
                           style:
                               TextButton.styleFrom(padding: EdgeInsets.all(0)),
                           child: Text(
-                            "Register Now",
+                            "Login",
                             style:
                                 regular.copyWith(fontSize: 16, color: primary),
                           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sophie/app/modules/login_social/views/login_social_view.dart';
 import 'package:sophie/shared/spacing.dart';
 import 'package:sophie/shared/theme.dart';
 
@@ -11,29 +12,35 @@ class OnboardingView extends GetView<OnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: controller.pageController,
-        onPageChanged: (value) => controller.page.value = value,
-        children: [
-          OnboardingWidget(
-            image: "bg1.png",
-            title: "Welcome to Sophie!",
-            subTitle:
-                "Discover the future of conversations with AI. Schedule calls, get insights, and engage with intelligent dialogue.",
-          ),
-          OnboardingWidget(
-            image: "bg2.png",
-            title: "Welcome to Sophie!",
-            subTitle:
-                "Discover the future of conversations with AI. Schedule calls, get insights, and engage with intelligent dialogue.",
-          ),
-          OnboardingWidget(
-            image: "bg3.png",
-            title: "Welcome to Sophie!",
-            subTitle:
-                "Discover the future of conversations with AI. Schedule calls, get insights, and engage with intelligent dialogue.",
-          ),
-        ],
+      body: Obx(
+        () => PageView(
+          controller: controller.pageController,
+          onPageChanged: (value) => controller.page.value = value,
+          physics: controller.page.value == 3
+              ? NeverScrollableScrollPhysics()
+              : AlwaysScrollableScrollPhysics(),
+          children: [
+            OnboardingWidget(
+              image: "bg1.png",
+              title: "Welcome to Sophie!",
+              subTitle:
+                  "Discover the future of conversations with AI. Schedule calls, get insights, and engage with intelligent dialogue.",
+            ),
+            OnboardingWidget(
+              image: "bg2.png",
+              title: "Welcome to Sophie!",
+              subTitle:
+                  "Discover the future of conversations with AI. Schedule calls, get insights, and engage with intelligent dialogue.",
+            ),
+            OnboardingWidget(
+              image: "bg3.png",
+              title: "Welcome to Sophie!",
+              subTitle:
+                  "Discover the future of conversations with AI. Schedule calls, get insights, and engage with intelligent dialogue.",
+            ),
+            LoginSocialView()
+          ],
+        ),
       ),
     );
   }
@@ -55,17 +62,7 @@ class OnboardingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: Get.height,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            white,
-            primary.withOpacity(0.02),
-          ],
-          end: Alignment.bottomCenter,
-          begin: Alignment.topCenter,
-          transform: GradientRotation(90),
-        ),
-      ),
+      color: backgroundColor,
       child: Column(
         children: [
           Image.asset("assets/images/onboarding/$image"),
