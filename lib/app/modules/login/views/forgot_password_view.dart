@@ -5,8 +5,8 @@ import 'package:sophie/app/routes/app_pages.dart';
 import 'package:sophie/app/widgets/auth_header.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
 import 'package:sophie/app/widgets/custom_textfield.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 class ForgotPasswordView extends GetView<LoginController> {
   const ForgotPasswordView({super.key});

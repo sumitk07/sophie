@@ -5,8 +5,8 @@ import 'package:sophie/app/modules/login/controllers/login_controller.dart';
 import 'package:sophie/app/routes/app_pages.dart';
 import 'package:sophie/app/widgets/auth_header.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 class VerifyOtpView extends GetView<LoginController> {
   const VerifyOtpView({super.key});
@@ -83,10 +83,11 @@ class VerifyOtpView extends GetView<LoginController> {
                             )
                           ],
                         ),
-                        Text(
-                          "01:59",
-                          style: regular.copyWith(fontSize: 16, color: primary),
-                        )
+                        Obx(() => Text(
+                              "00:${controller.otpTimeRemaining.value.toString().padLeft(2, '0')}",
+                              style: regular.copyWith(
+                                  fontSize: 16, color: primary),
+                            ))
                       ],
                     ),
                   ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sophie/app/routes/app_pages.dart';
 import 'package:sophie/app/widgets/auth_header.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
 import 'package:sophie/app/widgets/custom_textfield.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 import '../controllers/register_controller.dart';
 
@@ -95,10 +94,12 @@ class RegisterView extends GetView<RegisterController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    CustomButton(
-                      title: "Register",
-                      onPressed: () => Get.toNamed(Routes.VERIFY_REGISTER_OTP),
-                    ),
+                    Obx(() => CustomButton(
+                          title: "Register",
+                          onPressed: controller.sendOtp,
+                          isLoading: controller.loading.value,
+                          isDisabled: controller.loading.value,
+                        )),
                     verticalSpace(10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sophie/app/routes/app_pages.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 import '../controllers/login_social_controller.dart';
 

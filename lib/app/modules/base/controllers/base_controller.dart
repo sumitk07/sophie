@@ -1,23 +1,26 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class BaseController extends GetxController {
-  //TODO: Implement BaseController
+  static BaseController to = Get.find();
 
-  final count = 0.obs;
+  late PageController pageController;
+  RxInt currentPage = 0.obs;
+
   @override
   void onInit() {
+    pageController = PageController(initialPage: 0);
     super.onInit();
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void onClose() {
+    pageController.dispose();
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void goToPage(int page) {
+    currentPage.value = page;
+    pageController.jumpToPage(page);
+  }
 }

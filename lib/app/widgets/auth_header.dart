@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 class AuthHeader extends StatelessWidget {
   final String title;
-  final String subTitle;
+  final String? subTitle;
+  final bool? isBack;
 
-  const AuthHeader({super.key, required this.title, required this.subTitle});
+  const AuthHeader(
+      {super.key, required this.title, this.subTitle, this.isBack});
 
   @override
   Widget build(BuildContext context) {
@@ -19,33 +21,37 @@ class AuthHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipOval(
-            child: Material(
-              color: white,
-              child: InkWell(
-                onTap: Get.back,
-                child: SizedBox(
-                  width: 46,
-                  height: 46,
-                  child: Icon(
-                    Icons.arrow_back_rounded,
-                    color: primary,
+          if (isBack != false)
+            ClipOval(
+              child: Material(
+                color: white,
+                child: InkWell(
+                  onTap: Get.back,
+                  child: SizedBox(
+                    width: 46,
+                    height: 46,
+                    child: Icon(
+                      Icons.arrow_back_rounded,
+                      color: primary,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
+            )
+          else
+            SizedBox.shrink(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: semibold.copyWith(fontSize: 32, color: white),
+                style: medium.copyWith(fontSize: 28, color: white),
               ),
-              Text(
-                subTitle,
-                style: regular.copyWith(fontSize: 16, color: white),
-              ),
+              if (subTitle != null)
+                Text(
+                  subTitle!,
+                  style: regular.copyWith(fontSize: 16, color: white),
+                ),
             ],
           ),
         ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

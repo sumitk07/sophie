@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:sophie/app/modules/login_social/views/login_social_view.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 import '../controllers/onboarding_controller.dart';
 

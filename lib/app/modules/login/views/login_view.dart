@@ -5,8 +5,8 @@ import 'package:sophie/app/routes/app_pages.dart';
 import 'package:sophie/app/widgets/auth_header.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
 import 'package:sophie/app/widgets/custom_textfield.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -144,10 +144,12 @@ class LoginView extends GetView<LoginController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    CustomButton(
-                      title: "Sign In",
-                      onPressed: () => Get.toNamed(Routes.BASE),
-                    ),
+                    Obx(() => CustomButton(
+                          title: "Sign In",
+                          onPressed: controller.login,
+                          isLoading: controller.loading.value,
+                          isDisabled: controller.loading.value,
+                        )),
                     verticalSpace(10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

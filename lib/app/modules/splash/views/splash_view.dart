@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sophie/app/routes/app_pages.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 import '../controllers/splash_controller.dart';
 
@@ -11,10 +10,6 @@ class SplashView extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), (() {
-      Get.offAllNamed(Routes.ONBOARDING);
-    }));
-
     return Scaffold(
       backgroundColor: primary,
       body: Container(

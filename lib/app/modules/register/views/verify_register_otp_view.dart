@@ -5,8 +5,8 @@ import 'package:sophie/app/modules/register/controllers/register_controller.dart
 import 'package:sophie/app/routes/app_pages.dart';
 import 'package:sophie/app/widgets/auth_header.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 class VerifyRegisterOtpView extends GetView<RegisterController> {
   const VerifyRegisterOtpView({super.key});
@@ -23,7 +23,8 @@ class VerifyRegisterOtpView extends GetView<RegisterController> {
             children: [
               AuthHeader(
                 title: "Enter Verification Code",
-                subTitle: "Code has been sent to +6256956695",
+                subTitle:
+                    "Code has been sent to ${controller.tabController.index == 0 ? controller.emailController.text : controller.phoneController.text}",
               ),
               Column(
                 children: [
@@ -83,10 +84,11 @@ class VerifyRegisterOtpView extends GetView<RegisterController> {
                             )
                           ],
                         ),
-                        Text(
-                          "01:59",
-                          style: regular.copyWith(fontSize: 16, color: primary),
-                        )
+                        Obx(() => Text(
+                              "00:${controller.otpTimeRemaining.value.toString().padLeft(2, '0')}",
+                              style: regular.copyWith(
+                                  fontSize: 16, color: primary),
+                            ))
                       ],
                     ),
                   ),
@@ -95,10 +97,12 @@ class VerifyRegisterOtpView extends GetView<RegisterController> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-                child: CustomButton(
-                  title: "Verify OTP",
-                  onPressed: () => Get.toNamed(Routes.CREATE_PASSWORD),
-                ),
+                child: Obx(() => CustomButton(
+                      title: "Verify OTP",
+                      onPressed: controller.verifyOtp,
+                      isLoading: controller.loading.value,
+                      isDisabled: controller.loading.value,
+                    )),
               ),
             ],
           ),

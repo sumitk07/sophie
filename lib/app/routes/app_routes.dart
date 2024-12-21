@@ -15,6 +15,16 @@ abstract class Routes {
   static const VERIFY_REGISTER_OTP = _Paths.VERIFY_REGISTER_OTP;
   static const CREATE_PASSWORD = _Paths.CREATE_PASSWORD;
   static const BASE = _Paths.BASE;
+  static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
+  static const PROFILE = _Paths.PROFILE;
+  static const ADD_PROFILE = _Paths.ADD_PROFILE;
+  static const SELECT_PROFILE = _Paths.SELECT_PROFILE;
+  static const SCHEDULE = _Paths.SCHEDULE;
+  static const SUB_PROFILES = _Paths.SUB_PROFILES;
+  static const AUTH = _Paths.AUTH;
+  static const ADD_SUB_PROFILE = _Paths.ADD_SUB_PROFILE;
+  static const UPCOMING_CALL = _Paths.UPCOMING_CALL;
+  static const COMPLETED_CALL = _Paths.COMPLETED_CALL;
 }
 
 abstract class _Paths {
@@ -31,4 +41,14 @@ abstract class _Paths {
   static const VERIFY_REGISTER_OTP = '/verify-register-otp';
   static const CREATE_PASSWORD = '/create-password';
   static const BASE = '/base';
+  static const SUBSCRIPTION = '/subscription';
+  static const PROFILE = '/profile';
+  static const ADD_PROFILE = '/add-profile';
+  static const SELECT_PROFILE = '/select-profile';
+  static const SCHEDULE = '/schedule';
+  static const SUB_PROFILES = '/sub-profiles';
+  static const AUTH = '/auth';
+  static const ADD_SUB_PROFILE = '/add-sub-profile';
+  static const UPCOMING_CALL = '/upcoming-call';
+  static const COMPLETED_CALL = '/completed-call';
 }

@@ -4,8 +4,8 @@ import 'package:sophie/app/modules/register/controllers/register_controller.dart
 import 'package:sophie/app/widgets/auth_header.dart';
 import 'package:sophie/app/widgets/custom_button.dart';
 import 'package:sophie/app/widgets/custom_textfield.dart';
-import 'package:sophie/shared/spacing.dart';
-import 'package:sophie/shared/theme.dart';
+import 'package:sophie/app/shared/spacing.dart';
+import 'package:sophie/app/shared/theme.dart';
 
 class CreatePasswordView extends GetView<RegisterController> {
   const CreatePasswordView({super.key});
@@ -33,6 +33,7 @@ class CreatePasswordView extends GetView<RegisterController> {
                       placeholder: "Enter Password",
                       controller: controller.passwordController,
                       icon: Icons.lock,
+                      // validator: controller.passwordValidator,
                     ),
                     verticalSpace(10),
                     CustomTextField(
@@ -40,6 +41,7 @@ class CreatePasswordView extends GetView<RegisterController> {
                       placeholder: "Enter Password",
                       controller: controller.confirmPasswordController,
                       icon: Icons.lock,
+                      validator: controller.confirmPasswordValidator,
                     ),
                   ],
                 ),
@@ -49,9 +51,13 @@ class CreatePasswordView extends GetView<RegisterController> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
                 child: Column(
                   children: [
-                    CustomButton(
-                      title: "Confirm Password",
-                      onPressed: () {},
+                    Obx(
+                      () => CustomButton(
+                        title: "Confirm Password",
+                        onPressed: controller.updatePassword,
+                        isDisabled: controller.loading.value,
+                        isLoading: controller.loading.value,
+                      ),
                     ),
                   ],
                 ),
